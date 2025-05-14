@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'arm = arm.moveToTarget:main'
+            'target = arm.moveToTarget:main',
+            'marker = arm.marker:main',
         ],
     },
 )

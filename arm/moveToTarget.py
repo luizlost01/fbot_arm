@@ -1,23 +1,25 @@
 import rclpy
 from rclpy.node import Node
-from interbotix_xs_msgs.msg import JointSingleCommand
+from interbotix_xs_modules.xs_robot.arm import InterbotixManipulatorXS
+from visualization_msgs.msg import Marker
+from arm.marker import Point
 
 class MoveToTarget(Node):
     def __init__(self):
         super().__init__('movetotarget')
-        self.movearm_pub = self.create_publisher(JointSingleCommand,'/wx200/commands/joint_single', 10)
-    
-
-    
+        self.point = Point()
 
     def movetotarget(self):
-        msg = JointSingleCommand()
-        msg.name = 'waist'
-        msg.cmd = 2.0
+        bot = InterbotixManipulatorXS(
+            robot_model='wx200',
+            group_name='arm',
+            gripper_name='gripper'
+        )
+        bot.arm.set_ee_cartesian_trajectory(self.point.x)
+        print(self.point.x)
 
-        self.movearm_pub.publish(msg)
 
-
+    
 def main(args=None):
     rclpy.init(args=args)
     move = MoveToTarget()
