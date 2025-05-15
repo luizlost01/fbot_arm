@@ -7,8 +7,6 @@ class Block(Node):
         super().__init__('block')
         self.marker_pub = self.create_publisher(Marker, '/ballon', 10)
 
-        # self.marker_sub = self.create_subscription(Marker, )
-
         self.marker = Marker()
         self.marker.header.frame_id = 'wx200/base_link'
         self.marker.header.stamp = self.get_clock().now().to_msg()
@@ -22,10 +20,11 @@ class Block(Node):
         self.marker.color.g = 2.0
         self.marker.color.b = 0.0
         self.marker.color.a = 1.0
+        
         point = Point()
-        point.x= 0.30
-        point.y= 0.1
-        point.z= 0.10
+        point.x= 0.0
+        point.y= 0.0
+        point.z= 0.0
         self.marker.points=[point]
     
     def publish_marker(self):
