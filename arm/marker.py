@@ -2,8 +2,6 @@ import rclpy
 from rclpy.node import Node
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
-
-import time
 class Block(Node):
     def __init__(self):
         super().__init__('block')
@@ -24,16 +22,21 @@ class Block(Node):
         self.marker.color.g = 2.0
         self.marker.color.b = 0.0
         self.marker.color.a = 1.0
+        point = Point()
+        point.x= 0.30
+        point.y= 0.1
+        point.z= 0.10
+        self.marker.points=[point]
     
     def publish_marker(self):
 
-        #Define a variavel point usando o Points
-        point = Point()
-        #Define o ponto que o marker vai aparece no mundo
-        point.x, point.y, point.z = 1.0, 1.0, 1.0
+        # #Define a variavel point usando o Points
+        # point = Point()
+        # #Define o ponto que o marker vai aparece no mundo
+        # point.x, point.y, point.z = 0.0,0.0,0.0
 
-        #Insere 
-        self.marker.points.append(point)
+        # #Insere 
+        # self.marker.points.append(point)
 
 
         self.marker_pub.publish(self.marker)
