@@ -29,7 +29,7 @@ class MoveToTarget(Node):
         self.marker = Marker()
         self.marker.header.frame_id = 'wx200/base_link'
         self.marker.header.stamp = self.get_clock().now().to_msg()
-        self.marker.type = self.marker.POINTS
+        self.marker.type = self.marker.SPHERE
         self.marker.id = 1
         self.marker.action = self.marker.ADD
         self.marker.scale.x = 0.1
@@ -42,9 +42,7 @@ class MoveToTarget(Node):
         #Generate a random position to the marker between 0.0 and 0.30
         self.marker.pose.position.x = random.uniform(0.0, 0.30)
         self.marker.pose.position.z = random.uniform(0.0, 0.30)
-
-        self.marker.pose.position.y = 0.0
-
+        
         self.marker_pub.publish(self.marker)
 
         marker_points = self.marker.pose.position
