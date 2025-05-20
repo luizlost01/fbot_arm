@@ -1,0 +1,12 @@
+moveToTarget:
+  ros__parameters:
+    targets:
+      p1:
+        waist: 0.0
+        shoulder: -0.00033859387488699433
+        elbow: -4.712388980365745e-05
+        wrist_angle: -0.00011868238913548268
+        wrist_rotate: 0.0
+        gripper: 0.0
+        left_finger: 0.026
+        right_finger: -0.026
